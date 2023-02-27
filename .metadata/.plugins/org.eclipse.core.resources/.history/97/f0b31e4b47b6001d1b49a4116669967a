@@ -1,0 +1,31 @@
+package application;
+
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please inform todays date (day/month/year): ");
+		String date = input.nextLine();
+		
+		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
+		Instant informedDate = Instant.parse(date);
+		LocalDate japanDate = LocalDate.ofInstant(informedDate, ZoneId.of("Japan"));
+		LocalDate utc0 = LocalDate.ofInstant(informedDate, ZoneId.of("Greenwich"));
+		
+		System.out.println(informedDate);
+		System.out.println(japanDate);
+		System.out.println(utc0);
+			
+	}
+
+}
